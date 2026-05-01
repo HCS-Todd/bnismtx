@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>River Tips from Locals | San Marcos</title>
+  <meta name="description" content="A mobile-first San Marcos river guide with quick tips, local rules, and local BNI sponsor businesses." />
+  <style>
+    :root {
+      --navy: #082f57;
+      --navy-2: #0b3f70;
+      --teal: #047f9d;
+      --aqua: #dff6fb;
+      --foam: #f4fbfd;
+      --green: #75b98b;
+      --ink: #10243d;
+      --muted: #5d7186;
+      --line: #dbe9ef;
+      --card: #ffffff;
+      --shadow: 0 10px 28px rgba(8, 47, 87, .10);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #effaff 0%, #ffffff 22%, #f4fbfd 100%);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .site {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      background: #fff;
+      min-height: 100svh;
+      box-shadow: 0 0 0 1px rgba(8,47,87,.04), 0 24px 80px rgba(8,47,87,.10);
+      overflow: hidden;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      padding-top: max(14px, env(safe-area-inset-top));
+      background: rgba(8, 47, 87, .94);
+      backdrop-filter: blur(16px);
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .brand-mini { display: flex; align-items: center; gap: 9px; font-weight: 800; letter-spacing: -.02em; }
+    .wave-mark { width: 28px; height: 18px; display: inline-block; }
+    .menu { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.22); border-radius: 14px; display: grid; place-items: center; }
+    .menu span, .menu span:before, .menu span:after { display:block; width:18px; height:2px; border-radius:2px; background:#fff; content:""; }
+    .menu span:before { transform: translateY(-6px); }
+    .menu span:after { transform: translateY(4px); }
+
+    .hero {
+      position: relative;
+      padding: 34px 22px 24px;
+      background:
+        radial-gradient(circle at 85% 16%, rgba(119, 201, 213, .28), transparent 30%),
+        linear-gradient(145deg, #ffffff 0%, #effaff 72%, #ffffff 100%);
+      overflow: hidden;
+    }
+    .hero:after {
+      content:"";
+      position:absolute;
+      right:-70px;
+      bottom:-48px;
+      width: 250px;
+      height: 140px;
+      background: radial-gradient(ellipse at center, rgba(4,127,157,.16) 0%, rgba(4,127,157,.08) 48%, transparent 70%);
+      border-radius: 50%;
+    }
+    .eyebrow {
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      margin: 0 0 14px;
+      padding: 8px 12px;
+      border: 1px solid rgba(4,127,157,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.75);
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(48px, 15vw, 72px);
+      line-height: .88;
+      letter-spacing: -.07em;
+      color: var(--navy);
+    }
+    h1 span { display:block; color: var(--teal); }
+    .lede {
+      margin: 18px 0 0;
+      max-width: 32ch;
+      color: var(--navy-2);
+      font-size: 18px;
+      line-height: 1.35;
+      font-weight: 650;
+      letter-spacing: -.015em;
+    }
+    .hero-ctas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 22px;
+      position: relative;
+      z-index: 2;
+    }
+    .btn {
+      min-height: 48px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-weight: 850;
+      font-size: 15px;
+      letter-spacing: -.01em;
+      border: 1px solid transparent;
+    }
+    .btn.primary { background: var(--navy); color: #fff; box-shadow: 0 12px 24px rgba(8,47,87,.18); }
+    .btn.secondary { background: #fff; color: var(--teal); border-color: rgba(4,127,157,.35); }
+
+    section { padding: 26px 18px; }
+    .section-title { display:flex; align-items:center; gap: 10px; margin: 0 0 16px; }
+    .section-title h2 { margin:0; color: var(--navy); font-size: 30px; line-height: 1; letter-spacing: -.045em; }
+    .section-note { margin: -8px 0 16px 42px; color: var(--muted); font-size: 14px; line-height: 1.35; }
+
+    .tips { background:#fff; }
+    .tip-feed { display:grid; gap: 12px; }
+    .tip-card {
+      display:grid;
+      grid-template-columns: 58px 1fr;
+      gap: 14px;
+      align-items:center;
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+    .icon-bubble {
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      display:grid;
+      place-items:center;
+      background: linear-gradient(145deg, #e6f9fb, #d5f2f6);
+      color: var(--teal);
+    }
+    .tip-card h3, .rule-card h3 { margin:0; font-size: 18px; line-height: 1.15; letter-spacing: -.025em; color: var(--navy); }
+    .tip-card p { margin: 5px 0 0; color: var(--muted); line-height: 1.35; font-size: 14px; }
+
+    .rules {
+      background: linear-gradient(180deg, #f5fcff 0%, #ffffff 100%);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .rule-feed { display:grid; gap: 10px; }
+    .rule-card {
+      display:grid;
+      grid-template-columns: 50px 1fr;
+      gap: 13px;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,.94);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 20px rgba(8,47,87,.07);
+    }
+    .rule-card h3 { font-size: 16px; }
+    .rule-card p { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.35; }
+    .rule-card a { color: var(--teal); font-weight: 800; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    .verify {
+      margin: 14px 0 0;
+      padding: 13px 14px;
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      color: var(--navy-2);
+      font-size: 13px;
+      background: #fff;
+      border: 1px dashed rgba(4,127,157,.35);
+      border-radius: 16px;
+    }
+
+    .sponsors {
+      background:
+        linear-gradient(180deg, #ffffff 0%, #edfaff 100%);
+      padding-bottom: 34px;
+    }
+    .sponsor-feed { display:grid; gap: 12px; }
+    .sponsor-card {
+      display:grid;
+      grid-template-columns: 66px 1fr;
+      gap: 14px;
+      align-items:center;
+      min-height: 88px;
+      padding: 14px;
+      border-radius: var(--radius-lg);
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .logo-wrap {
+      width: 66px;
+      height: 66px;
+      border-radius: 19px;
+      background: #f5fbfd;
+      border: 1px solid #dbe9ef;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+    }
+    .logo-wrap img { width: 46px; height: 46px; object-fit: contain; display:block; }
+    .sponsor-card h3 { margin:0; font-size: 17px; line-height: 1.12; letter-spacing: -.025em; color: var(--navy); }
+    .sponsor-card p { margin: 4px 0 0; color: var(--muted); font-size: 13px; line-height: 1.25; }
+    .sponsor-card .domain { margin-top: 8px; display:inline-flex; color: var(--teal); font-size: 12px; font-weight: 800; }
+
+    .footer {
+      padding: 34px 18px 38px;
+      text-align:center;
+      color:#fff;
+      background: radial-gradient(circle at 50% -20%, #0d5d88 0%, var(--navy) 58%, #062541 100%);
+      position: relative;
+    }
+    .footer:before {
+      content:"";
+      position:absolute;
+      top:-18px;
+      left:0;
+      width:100%;
+      height:36px;
+      background: #edfaff;
+      border-radius: 0 0 50% 50%;
+    }
+    .footer h2 { margin:0; font-size: 26px; line-height:1; letter-spacing:-.04em; }
+    .footer p { margin:8px 0 0; color: rgba(255,255,255,.82); }
+
+    svg { width: 24px; height: 24px; flex: 0 0 auto; }
+    @media (min-width: 481px) {
+      body { background:#dfeef5; }
+      .site { margin: 24px auto; border-radius: 34px; }
+      .topbar { border-radius: 34px 34px 0 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="site">
+    <nav class="topbar" aria-label="Main navigation">
+      <a class="brand-mini" href="#top" aria-label="River Tips from Locals home">
+        <svg class="wave-mark" viewBox="0 0 64 32" aria-hidden="true"><path d="M4 17c8-10 17-10 27 0s19 10 29 0" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M4 27c8-8 17-8 27 0s19 8 29 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".65"/></svg>
+        River Guide
+      </a>
+      <a class="menu" href="#sponsors" aria-label="Jump to sponsors"><span></span></a>
+    </nav>
+
+    <header id="top" class="hero">
+      <div class="eyebrow">San Marcos, Texas</div>
+      <h1>River Tips <span>from Locals</span></h1>
+      <p class="lede">A quick river guide from local BNI businesses. Know the basics before you float.</p>
+      <div class="hero-ctas">
+        <a class="btn primary" href="#tips">River Tips</a>
+        <a class="btn secondary" href="#rules">Rules</a>
+      </div>
+    </header>
+
+    <section id="tips" class="tips">
+      <div class="section-title">
+        <svg viewBox="0 0 64 32" aria-hidden="true"><path d="M4 17c8-10 17-10 27 0s19 10 29 0" fill="none" stroke="#047f9d" stroke-width="6" stroke-linecap="round"/></svg>
+        <h2>Float smarter</h2>
+      </div>
+      <div class="tip-feed">
+        <article class="tip-card"><div class="icon-bubble">💧</div><div><h3>Bring water and sunscreen.</h3><p>The river feels cool. The sun still wins.</p></div></article>
+        <article class="tip-card"><div class="icon-bubble">🩴</div><div><h3>Wear secure shoes or sandals.</h3><p>Flip-flops disappear. River rocks do not care.</p></div></article>
+        <article class="tip-card"><div class="icon-bubble">📱</div><div><h3>Use a dry bag.</h3><p>Protect phones, keys, wallets, and small essentials.</p></div></article>
+        <article class="tip-card"><div class="icon-bubble">🗑️</div><div><h3>Pack out your trash.</h3><p>Leave the river cleaner than you found it.</p></div></article>
+        <article class="tip-card"><div class="icon-bubble">🚌</div><div><h3>Plan your shuttle and pickup.</h3><p>Know where the bus brings you back before you float.</p></div></article>
+        <article class="tip-card"><div class="icon-bubble">🦺</div><div><h3>Watch kids and weaker swimmers.</h3><p>Use flotation when judgment says to use flotation.</p></div></article>
+      </div>
+    </section>
+
+    <section id="rules" class="rules">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.2 8.4-7 10-3.8-1.6-7-5-7-10V6l7-3z" fill="none" stroke="#047f9d" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9" fill="none" stroke="#047f9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h2>Rules</h2>
+      </div>
+      <p class="section-note">Plain-English summary. Always verify before your trip.</p>
+      <div class="rule-feed">
+        <article class="rule-card"><div class="icon-bubble">🥤</div><div><h3>Reusable drink containers only in river “No Zones.”</h3><p><a href="https://sanmarcostx.gov/4299/Single-Use-Beverage-Container-Ban" target="_blank" rel="noopener">City of San Marcos - Single-Use Beverage Container Ban</a>, Sec. 58.034.</p></div></article>
+        <article class="rule-card"><div class="icon-bubble">🧊</div><div><h3>One cooler per person, under 30 quarts, in “No Zones.”</h3><p><a href="https://sanmarcostx.gov/parkrules" target="_blank" rel="noopener">City of San Marcos Park Rules</a>, Sec. 58.073.</p></div></article>
+        <article class="rule-card"><div class="icon-bubble">🚫</div><div><h3>No glass containers.</h3><p><a href="https://sanmarcostx.gov/parkrules" target="_blank" rel="noopener">City of San Marcos Park Rules</a>, Sec. 58.034.</p></div></article>
+        <article class="rule-card"><div class="icon-bubble">🚫</div><div><h3>No Styrofoam containers.</h3><p><a href="https://sanmarcostx.gov/parkrules" target="_blank" rel="noopener">City of San Marcos Park Rules</a>, Sec. 58.042.</p></div></article>
+        <article class="rule-card"><div class="icon-bubble">🚫</div><div><h3>Alcohol consumption/display prohibited in city parks.</h3><p><a href="https://sanmarcostx.gov/parkrules" target="_blank" rel="noopener">City of San Marcos Park Rules</a>, Sec. 58.033.</p></div></article>
+        <article class="rule-card"><div class="icon-bubble">🚭</div><div><h3>No smoking or vaping in city parks.</h3><p><a href="https://sanmarcostx.gov/parkrules" target="_blank" rel="noopener">City of San Marcos Park Rules</a>, Sec. 34.257.</p></div></article>
+      </div>
+      <div class="verify">ⓘ <span>Rules change. Use the official City of San Marcos links above as the source of truth.</span></div>
+    </section>
+
+    <section id="sponsors" class="sponsors">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 11l3 3c1 1 2 1 3 0l1-1" fill="none" stroke="#047f9d" stroke-width="2" stroke-linecap="round"/><path d="M7 12l-3-3 4-4 3 3M17 12l3-3-4-4-3 3" fill="none" stroke="#047f9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h2>Local sponsors</h2>
+      </div>
+      <p class="section-note">Businesses from the BNI sponsor group.</p>
+      <div class="sponsor-feed">
+        <a class="sponsor-card" href="https://www.mattresswarehousetx.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=mattresswarehousetx.com&sz=128" alt="Mattress Warehouse TX logo"></div><div><h3>Mattress Warehouse TX</h3><p>Mattresses and sleep products</p><span class="domain">mattresswarehousetx.com</span></div></a>
+        <a class="sponsor-card" href="https://www.restoprosnbsm.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=restoprosnbsm.com&sz=128" alt="RestoPros San Marcos logo"></div><div><h3>RestoPros San Marcos</h3><p>Restoration services</p><span class="domain">restoprosnbsm.com</span></div></a>
+        <a class="sponsor-card" href="https://www.graduatecontracting.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=graduatecontracting.com&sz=128" alt="Graduate Contracting logo"></div><div><h3>Graduate Contracting</h3><p>Contracting and construction</p><span class="domain">graduatecontracting.com</span></div></a>
+        <a class="sponsor-card" href="https://www.righttoolmedia.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=righttoolmedia.com&sz=128" alt="Right Tool Media logo"></div><div><h3>Right Tool Media</h3><p>Marketing and media</p><span class="domain">righttoolmedia.com</span></div></a>
+        <a class="sponsor-card" href="https://www.legacyinsurance1.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=legacyinsurance1.com&sz=128" alt="San Marcos Insurance Agency logo"></div><div><h3>San Marcos Insurance Agency</h3><p>Insurance services</p><span class="domain">legacyinsurance1.com</span></div></a>
+        <a class="sponsor-card" href="https://www.frostbank.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=frostbank.com&sz=128" alt="Frost Bank logo"></div><div><h3>Frost Bank</h3><p>Banking</p><span class="domain">frostbank.com</span></div></a>
+        <a class="sponsor-card" href="https://www.paramount.tax" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=paramount.tax&sz=128" alt="Paramount Tax and Bookkeeping logo"></div><div><h3>Paramount Tax and Bookkeeping</h3><p>Tax and bookkeeping</p><span class="domain">paramount.tax</span></div></a>
+        <a class="sponsor-card" href="mailto:davidhatton@live.com"><div class="logo-wrap"><span>PE</span></div><div><h3>Pullen Electric</h3><p>Electrical services</p><span class="domain">Use member contact</span></div></a>
+        <a class="sponsor-card" href="https://www.smtxwash.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=smtxwash.com&sz=128" alt="SMTX Wash logo"></div><div><h3>SMTX Wash</h3><p>Wash and cleaning services</p><span class="domain">smtxwash.com</span></div></a>
+        <a class="sponsor-card" href="https://www.lunaenvironmental.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=lunaenvironmental.com&sz=128" alt="Luna Environmental logo"></div><div><h3>Luna Environmental</h3><p>Environmental services</p><span class="domain">lunaenvironmental.com</span></div></a>
+        <a class="sponsor-card" href="https://www.missionablesmtx.org" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=missionablesmtx.org&sz=128" alt="Mission Able of San Marcos logo"></div><div><h3>Mission Able of San Marcos</h3><p>Community nonprofit</p><span class="domain">missionablesmtx.org</span></div></a>
+        <a class="sponsor-card" href="mailto:Dr.duran.chiro@gmail.com"><div class="logo-wrap"><span>VC</span></div><div><h3>Victory Chiropractic</h3><p>Chiropractic care</p><span class="domain">Use member contact</span></div></a>
+        <a class="sponsor-card" href="https://www.gkz-arch.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=gkz-arch.com&sz=128" alt="GKZ Inc. Architecture and Planning logo"></div><div><h3>GKZ Inc. Architecture & Planning</h3><p>Architecture and planning</p><span class="domain">gkz-arch.com</span></div></a>
+        <a class="sponsor-card" href="mailto:jennycaresinsurance@gmail.com"><div class="logo-wrap"><span>UH</span></div><div><h3>USHealth Advisors</h3><p>Health insurance advisory</p><span class="domain">Use member contact</span></div></a>
+        <a class="sponsor-card" href="mailto:airafitnesssanmarcos@gmail.com"><div class="logo-wrap"><span>AF</span></div><div><h3>Aira Fitness</h3><p>Fitness and wellness</p><span class="domain">Use member contact</span></div></a>
+        <a class="sponsor-card" href="https://www.hotyogasanmarcos.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=hotyogasanmarcos.com&sz=128" alt="Hot Yoga San Marcos logo"></div><div><h3>Hot Yoga San Marcos</h3><p>Yoga and wellness</p><span class="domain">hotyogasanmarcos.com</span></div></a>
+        <a class="sponsor-card" href="mailto:Jmcanchol17@gmail.com"><div class="logo-wrap"><span>KB</span></div><div><h3>Kent Black’s BBQ</h3><p>Barbecue restaurant</p><span class="domain">Use member contact</span></div></a>
+        <a class="sponsor-card" href="https://www.3zmanagement.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=3zmanagement.com&sz=128" alt="3Z Property Management logo"></div><div><h3>3Z Property Management</h3><p>Property management</p><span class="domain">3zmanagement.com</span></div></a>
+        <a class="sponsor-card" href="https://www.pakmail.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=pakmail.com&sz=128" alt="Pak Mail logo"></div><div><h3>Pak Mail</h3><p>Packing and shipping</p><span class="domain">pakmail.com</span></div></a>
+        <a class="sponsor-card" href="https://www.birdysolutions.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=birdysolutions.com&sz=128" alt="Birdy Merchant Solutions logo"></div><div><h3>Birdy Merchant Solutions</h3><p>Merchant services</p><span class="domain">birdysolutions.com</span></div></a>
+        <a class="sponsor-card" href="https://www.salshouseoftint.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=salshouseoftint.com&sz=128" alt="Sal's House of Tint logo"></div><div><h3>Sal’s House of Tint</h3><p>Window tinting</p><span class="domain">salshouseoftint.com</span></div></a>
+        <a class="sponsor-card" href="https://www.michisworldofchaos.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=michisworldofchaos.com&sz=128" alt="Michi's World of Chaos Art logo"></div><div><h3>Michi’s World of Chaos Art</h3><p>Art and creative work</p><span class="domain">michisworldofchaos.com</span></div></a>
+        <a class="sponsor-card" href="https://www.paladinpest.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=paladinpest.com&sz=128" alt="Paladin Pest Control logo"></div><div><h3>Paladin Pest Control</h3><p>Pest control</p><span class="domain">paladinpest.com</span></div></a>
+        <a class="sponsor-card" href="https://www.sanmarcos-insurance.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=sanmarcos-insurance.com&sz=128" alt="San Marcos Insurance Agency logo"></div><div><h3>San Marcos Insurance Agency</h3><p>Insurance services</p><span class="domain">sanmarcos-insurance.com</span></div></a>
+        <a class="sponsor-card" href="https://www.copperfieldplumbingservices.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=copperfieldplumbingservices.com&sz=128" alt="Copperfield Plumbing logo"></div><div><h3>Copperfield Plumbing</h3><p>Plumbing services</p><span class="domain">copperfieldplumbingservices.com</span></div></a>
+        <a class="sponsor-card" href="https://www.kw.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=kw.com&sz=128" alt="Keller Williams Commercial logo"></div><div><h3>Keller Williams Commercial</h3><p>Commercial real estate</p><span class="domain">kw.com</span></div></a>
+        <a class="sponsor-card" href="mailto:shtookaatelier@gmail.com"><div class="logo-wrap"><span>SA</span></div><div><h3>Shtooka Atelier Photography</h3><p>Photography</p><span class="domain">Use member contact</span></div></a>
+        <a class="sponsor-card" href="https://www.centexpressurewashing.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=centexpressurewashing.com&sz=128" alt="Centex Pressure Washing logo"></div><div><h3>Centex Pressure Washing</h3><p>Pressure washing</p><span class="domain">centexpressurewashing.com</span></div></a>
+        <a class="sponsor-card" href="https://www.smairtx.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=smairtx.com&sz=128" alt="San Marcos Air Conditioning logo"></div><div><h3>San Marcos Air Conditioning</h3><p>HVAC services</p><span class="domain">smairtx.com</span></div></a>
+        <a class="sponsor-card" href="https://www.3zrealty.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=3zrealty.com&sz=128" alt="3Z Realty logo"></div><div><h3>3Z Realty</h3><p>Real estate</p><span class="domain">3zrealty.com</span></div></a>
+        <a class="sponsor-card" href="https://www.yarbroughagency.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=yarbroughagency.com&sz=128" alt="Yarbrough Agency logo"></div><div><h3>Yarbrough Agency</h3><p>Insurance agency</p><span class="domain">yarbroughagency.com</span></div></a>
+        <a class="sponsor-card" href="https://www.360painting.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=360painting.com&sz=128" alt="360 Painting of San Marcos logo"></div><div><h3>360 Painting of San Marcos</h3><p>Painting services</p><span class="domain">360painting.com</span></div></a>
+        <a class="sponsor-card" href="https://www.hcsts.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=hcsts.com&sz=128" alt="HCS Technical Service logo"></div><div><h3>HCS Technical Service</h3><p>IT and cybersecurity</p><span class="domain">hcsts.com</span></div></a>
+        <a class="sponsor-card" href="https://www.therapynexus.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=therapynexus.com&sz=128" alt="Therapy Nexus Physical Therapy logo"></div><div><h3>Therapy Nexus Physical Therapy</h3><p>Physical therapy</p><span class="domain">therapynexus.com</span></div></a>
+        <a class="sponsor-card" href="https://www.five-mile.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=five-mile.com&sz=128" alt="Five Mile Construction logo"></div><div><h3>Five Mile Construction</h3><p>Construction services</p><span class="domain">five-mile.com</span></div></a>
+        <a class="sponsor-card" href="https://www.adp.com" target="_blank" rel="noopener"><div class="logo-wrap"><img src="https://www.google.com/s2/favicons?domain=adp.com&sz=128" alt="ADP logo"></div><div><h3>ADP</h3><p>Payroll and HR services</p><span class="domain">adp.com</span></div></a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <h2>River Tips from Locals</h2>
+      <p>San Marcos, Texas</p>
+      <p>Sponsored by local BNI businesses</p>
+    </footer>
+  </main>
+</body>
+</html>
