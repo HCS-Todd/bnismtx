@@ -1,0 +1,16 @@
+{
+  "name": "River Tips from Locals",
+  "short_name": "River Tips",
+  "description": "A mobile-first San Marcos river guide with quick tips, local rules, and local sponsors.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#082f57",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

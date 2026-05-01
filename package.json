@@ -1,0 +1,18 @@
+{
+  "name": "river-tips-from-locals",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mobile-first San Marcos river tips landing page for local BNI sponsors.",
+  "scripts": {
+    "start": "vite --host 0.0.0.0",
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "latest",
+    "prettier": "latest",
+    "vite": "latest"
+  }
+}
